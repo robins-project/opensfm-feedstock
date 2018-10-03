@@ -1,0 +1,14 @@
+diff --git a/opensfm/src/CMakeLists.txt b/opensfm/src/CMakeLists.txt
+index de3562f..3ebe36f 100644
+--- a/opensfm/src/CMakeLists.txt
++++ b/opensfm/src/CMakeLists.txt
+@@ -54,7 +54,8 @@ set(BOOST_PYTHON3_COMPONENT "python3" CACHE STRING
+ 
+ if(${BUILD_FOR_PYTHON3})
+     set(BOOST_PYTHON_COMPONENT ${BOOST_PYTHON3_COMPONENT})
+-    set(BOOST_NUMPY_COMPONENT numpy3)
++    set(BOOST_NUMPY_COMPONENT "numpy3" CACHE STRING
++    "name of the Boost Numpy 3 component (numpy3, numpy-py36 or numpy-py37)")
+     set(Python_ADDITIONAL_VERSIONS 3.7 3.6)
+     set(Python_VERSION_SUFFIX 3)
+ else()

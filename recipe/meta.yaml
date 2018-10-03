@@ -1,0 +1,61 @@
+{% set version = "master" %}
+
+package:
+  name: opensfm
+  version: {{ version }}
+
+source:
+  fn: opensfm-{{ version }}.tar.gz
+  url: https://github.com/OpenDroneMap/OpenSfM/archive/{{ version }}.tar.gz
+  sha256: cddec76f219d4137f647114761118e1754e351f4bfde64d25064a32c82200d5e
+  patches:
+    - numpy.patch
+
+build:
+    number: 0
+    features:
+      - feature_cuda_{{ cuda_impl }}
+      - feature_blas_{{ blas_impl }}
+
+requirements:
+  build:
+    - {{ compiler("c") }}
+    - {{ compiler("cxx") }}
+    - cmake
+    - ninja
+    - eigen
+    - suitesparse
+    - ceres
+    - boost
+    - opencv
+  host:
+    - networkx
+    - numpy
+    - pyproj
+    - pytest
+    - python-dateutil
+    - PyYAML
+    - repoze.lru
+    - scipy
+    - six
+    - xmltodict
+  run:
+    - feature_blas {{ feature_blas }} {{ blas_impl }}
+    - feature_cuda {{ feature_cuda }} {{ cuda_impl }}
+    - glog
+    - suitesparse
+    - boost
+    - opencv
+
+test:
+  imports:
+    - opensfm.csfm
+
+about:
+  home: https://github.com/mapillary/OpenSfM
+  license: BSD
+  summary: Open source Structure from Motion pipeline
+
+extra:
+  recipe-maintainers:
+    - v-turin
