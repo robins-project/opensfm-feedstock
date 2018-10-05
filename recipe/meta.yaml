@@ -29,6 +29,7 @@ requirements:
     - boost
     - opencv
   host:
+    - python
     - networkx
     - numpy
     - pyproj
