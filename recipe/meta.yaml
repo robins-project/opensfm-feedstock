@@ -47,6 +47,15 @@ requirements:
     - suitesparse
     - boost
     - opencv
+    - python
+    - numpy
+    - networkx
+    - pyproj
+    - PyYAML
+    - repoze.lru
+    - scipy
+    - six
+    - xmltodict
 
 test:
   imports:

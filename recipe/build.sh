@@ -33,6 +33,7 @@ ninja
 
 cp ../bin/opensfm_run_all ${PREFIX}/bin
 cp ../bin/opensfm ${PREFIX}/bin
+cp ../bin/export_bundler ${PREFIX}/bin
 
 mkdir -p $SP_DIR/opensfm
 cp ../opensfm/*.py $SP_DIR/opensfm
