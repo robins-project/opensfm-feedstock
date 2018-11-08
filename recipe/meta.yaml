@@ -7,7 +7,7 @@ package:
 source:
   fn: opensfm-{{ version }}.tar.gz
   url: https://github.com/OpenDroneMap/OpenSfM/archive/{{ version }}.tar.gz
-  sha256: cddec76f219d4137f647114761118e1754e351f4bfde64d25064a32c82200d5e
+  sha256: 9eeea7e0f7435985b1010c463bc08fbf03e2112c9fbe07f458283168186dc5c5
   patches:
     - numpy.patch
 
@@ -23,11 +23,6 @@ requirements:
     # - {{ compiler("cxx") }}
     - cmake
     - ninja
-    - eigen
-    - suitesparse
-    - ceres
-    - boost
-    - opencv
   host:
     - python
     - networkx
@@ -40,13 +35,18 @@ requirements:
     - scipy
     - six
     - xmltodict
+    - eigen {{ eigen }}
+    - suitesparse {{ suitesparse }}
+    - ceres {{ ceres }}
+    - boost
+    - opencv {{ opencv }}
   run:
     - feature_blas {{ feature_blas }} {{ blas_impl }}
     - feature_cuda {{ feature_cuda }} {{ cuda_impl }}
     - glog
-    - suitesparse
+    - suitesparse {{ suitesparse }}
     - boost
-    - opencv
+    - opencv {{ opencv }}
     - python
     - numpy
     - networkx

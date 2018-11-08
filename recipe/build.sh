@@ -20,13 +20,15 @@ fi
 
 cmake -G "Ninja"                                              \
     -DCMAKE_INSTALL_PREFIX=${PREFIX}                          \
+    -DCMAKE_PREFIX_PATH=${PREFIX}                             \
     -DCMAKE_BUILD_TYPE=Release                                \
     -DOPENSFM_BUILD_TESTS=OFF                                 \
-    -DEIGEN_INCLUDE_DIR_HINTS=${CONDA_PREFIX}/include/eigen3  \
-    -DLIBRT_LIBRARY=${CONDA_PREFIX}/lib/libmkl_rt.so          \
+    -DBLA_VENDOR=Intel10_64lp                                 \
+    -DEIGEN_INCLUDE_DIR_HINTS=${PREFIX}/include/eigen3        \
     -DBUILD_FOR_PYTHON3=${BUILD_FOR_PYTHON3}                  \
     ${BOOST_PYTHON_COMPONENT}                                 \
     ${BOOST_NUMPY_COMPONENT}                                  \
+    -DCMAKE_LIBRARY_ARCHITECTURE=x86_64-linux-gnu             \
     ../opensfm/src
 
 ninja
